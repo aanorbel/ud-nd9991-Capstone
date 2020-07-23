@@ -56,8 +56,6 @@ Once you have completed your Continuous Integration you will set up Continuous D
     Verify that your pipeline works as you designed it.
     Take a screenshot of the Jenkins pipeline showing deployment and a screenshot of your AWS EC2 page showing the newly created (for blue/green) or modified (for rolling) instances. Make sure you name your instances differently between blue and green deployments.
 
-## File structure
-
 ### Application
 
 [Bcrypt Sandbox](https://github.com/felladrin/bcrypt-sandbox), as the main application.
