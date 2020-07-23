@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
 data:
   mapUsers: |
-    - userarn: arn:aws:iam::636999724661:user/jenkins
+    - userarn: arn:aws:iam::693037469598:user/jenkins
       username: jenkins
       groups:
         - system:masters
