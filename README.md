@@ -58,40 +58,92 @@ Once you have completed your Continuous Integration you will set up Continuous D
 
 ## File structure
 
-### Application:
+### Application
 
-* [Bcrypt Sandbox](https://github.com/felladrin/bcrypt-sandbox), as the main application.
+[Bcrypt Sandbox](https://github.com/felladrin/bcrypt-sandbox), as the main application.
 
-### CI/CD:
+### Project Structure
 
-- `Jenkinsfile` file with Pipeline configuration
-- `kubernetes/deployment.yml` file used for deploy to cluster k8s
-- `kubernetes/aws-auth-cm.yaml` used to allow auth into k8s in `aws eks`
+    ```md
+    .
+    ├── Dockerfile
+    ├── Jenkinsfile
+    ├── README.md
+    ├── app
+    │   ├── LICENSE
+    │   ├── README.md
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── screenshot.png
+    │   └── src
+    │       ├── app.jsx
+    │       ├── index.html
+    │       └── index.jsx
+    ├── infra
+    │   ├── eks
+    │   │   ├── eks-nodes.json
+    │   │   ├── eks-nodes.yml
+    │   │   ├── eks.json
+    │   │   └── eks.yml
+    │   ├── jenkins
+    │   │   ├── iam.json
+    │   │   ├── iam.yml
+    │   │   ├── server.json
+    │   │   └── server.yml
+    │   └── network
+    │       ├── network.json
+    │       └── network.yml
+    ├── kubernetes
+    │   ├── aws-auth-cm.yaml
+    │   └── deployment.yml
+    └── scripts
+        ├── create-stack.sh
+        ├── delete-stack.sh
+        ├── run_docker.sh
+        ├── run_kubernetes.sh
+        ├── update-stack.sh
+        └── upload_docker.sh
+    ```
 
-### Infrastructure
+### Instructions
 
-### Outputs:
-
-
-1. Run in AWS:
+Run in AWS:
 
 You need create the whole infrastructure to deploy the app
 
-```
+1. Create the network for the project.
 
-scripts/create-stack.sh network-stack infra/network/network.yml infra/network/network.json
+    ```bash
 
-scripts/create-stack.sh iam-stack-jenkins infra/jenkins/iam.yml infra/jenkins/iam.json
+        scripts/create-stack.sh network-stack infra/network/network.yml infra/network/network.json
+    ```
 
-scripts/create-stack.sh server-stack infra/jenkins/server.yml infra/jenkins/server.json
+2. Create IAM User for jenkins. This will be used by jenkins to communicate to EKS cluster
 
-scripts/create-stack.sh eks-stack infra/eks/eks.yml infra/eks/eks.json
+    ```bash
+        scripts/create-stack.sh iam-stack-jenkins infra/jenkins/iam.yml infra/jenkins/iam.json
+    ```
 
-scripts/create-stack.sh eks-nodes-stack infra/eks/eks-nodes.yml  infra/eks/eks-nodes.json
+3. Create Jenkins server and install neccessary tools.
 
-```
+    ```bash
+    scripts/create-stack.sh server-stack infra/jenkins/server.yml infra/jenkins/server.json
+    ```
 
-Now you can access to Jenkins to deploy using the pipeline.
+4. Create EKS cluster and add nodes.
 
-You can access the demo using this [link](http://ab61939fd7bf446139fc1752a884b09f-308296604.us-west-2.elb.amazonaws.com:8000/) 
+    ```bash
+
+    scripts/create-stack.sh eks-stack infra/eks/eks.yml infra/eks/eks.json
+
+    scripts/create-stack.sh eks-nodes-stack infra/eks/eks-nodes.yml  infra/eks/eks-nodes.json
+
+    ```
+
+Now you can access to [Jenkins](http://ec2-52-89-165-194.us-west-2.compute.amazonaws.com:8080/) to deploy using the pipeline.
+
+You can access the demo using this [link](http://a1fc0e247a5f545dcb251039520974b9-710933009.us-west-2.elb.amazonaws.com:8000/) 
+
+
+### Screenshots
 
