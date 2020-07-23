@@ -152,17 +152,25 @@ You can access the demo using this [link](http://a1fc0e247a5f545dcb251039520974b
 ![](screenshots/Screenshot_2020-07-23-CloudFormation-Stack.png?raw=true)
 
 ##### Failed linting
+
 ![](screenshots/Screenshot_2020-07-23-jenkins-capstone9.png?raw=true)
 
-##### Failed Scannint
+##### Failed Scanning
+
 ![](screenshots/Screenshot_2020-07-23-jenkins-capstone-1.png?raw=true)
 
 ##### Successfull linting and Scanning
+
 ![](screenshots/Screenshot_2020-07-23-jenkins-capstone-10.png?raw=true)
+
 ##### Initial deployment
 
 ![](screenshots/Screenshot_2020-07-23-jenkins-capstone.png?raw=true)
 
+![](screenshots/Screen-Shot-2020-07-23-at-AM.png?raw=true)
+
 ##### Subsequent deployment
 
-![](screenshots/Screenshot_2020-07-23 jenkins-capstone-11.png?raw=true)
+![](screenshots/Screenshot_2020-07-23-jenkins-capstone-11.png?raw=true)
+
+![](screenshots/Screen-Shot-2020-07-23-at-9.28.40-AM.png?raw=true)
